@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Info{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="section title">
+        <div class="container">
+            <h2 class="bg-white mx-auto p-3 d-table text-center display-1">{{ context.label }}</h2>
+        </div>
+    </div>
+    <div class="section pb-0">
+        <div class="container">
+            <p>{{ context.scopeNote }}</p>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row disease-list bg-primary-light">
+                {% for item in context.childrenList %}
+                <div class="col-xl-6">
+                    <a href="/info/{{ item.children_d }}">{{ item.name }}</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
