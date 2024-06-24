@@ -248,3 +248,58 @@ background-color:rgba(149,181,88,0.8);
 .badge{
     cursor: pointer;
 }
+
+#signup-page:after, #login-page:after{
+    content:'';
+    position:absolute;
+    top:43px;
+    left:0;
+    width:100%;
+    height:3px;
+    background-color:var(--secondary-color);
+    transform: rotate(-45deg);
+    transform-origin:left;
+}
+
+    #signup-page:before, #login-page:before {
+        content: '';
+        position: absolute;
+        top: 60px;
+        left: -30px;
+        width: 100%;
+        height: 30px;
+        border-top: 3px solid var(--primary-color);
+        border-bottom: 3px solid var(--tertiary-color);
+        transform: rotate(-45deg);
+        transform-origin: left;
+    }
+
+    #signup-page .card, #login-page .card{
+    width: 100%;
+    max-width: 500px;
+}
+
+#signup-page a, #login-page a{
+    color:var(--secondary-color);
+}
+
+#signup-page img, #login-page img{
+    max-width: 150px;
+}
+
+#signup-page, #login-page{
+    padding:60px 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#nav-login-button{
+    background-color:var(--secondary-color);
+    color:white;
+}
+
+.dropdown-toggle::after{
+    display:none;
+}

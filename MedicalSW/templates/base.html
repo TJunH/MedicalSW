@@ -57,6 +57,24 @@
                       <li class="nav-item">
                         <a class="nav-link {% if current_page == 'about' %}active{% endif %}" href="{{ url_for('about') }}">About</a>
                       </li>
+                      {% if 'username' in session %}
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 18 18">
+                              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                            </svg>
+                          </a>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                          </ul>
+                        </li>
+                      {% else %}
+                        <li class="nav-item">
+                          <a class="nav-link" id="nav-login-button" href="{{ url_for('login') }}">Login</a>
+                        </li>
+                      {% endif %}
                     </ul> 
                   </div>
                 </div>
@@ -64,6 +82,16 @@
         </div>
     </header>
     <div class="page">
+      {% with messages = get_flashed_messages() %}
+          {% if messages %}
+              <div class="alert alert-light alert-dismissible fade show">
+                  {% for message in messages %}
+                      <p>{{ message }}</p>
+                  {% endfor %}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+          {% endif %}
+      {% endwith %}
         {% block content %}{% endblock %}
     </div>
     <footer>
